@@ -6,13 +6,13 @@ include 'includes/dbh.inc.php';
 $update=false;
 ?>
 <div id="myDiv2" class="bg-light">
-
     <form class="form-inline" action="observation.php"  method="post">
-        <div class="container h-100">
-            <div class="d-flex justify-content-center h-100">
-                <div class="searchbar">
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="searchbar">
                     <input class="search_input" type="text" name="search" placeholder="Search...">
                     <button type="submit" class="search_icon search_input2"  name="submit-search"><i class="fas fa-search"></i></button>
+
                 </div>
             </div>
         </div>

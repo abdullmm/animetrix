@@ -1,12 +1,7 @@
 <?php
 require 'head.php';
 include_once 'includes/users.inc.php';
-//if (isset($_SESSION['username'])) {
-//
-//} else{
-////    header("Location: index.php?error=niceTry");
-////    exit();
-//}
+
 
 ?>
 
@@ -27,7 +22,7 @@ include_once 'includes/users.inc.php';
             } ?>
             <table class="table table-hover table-dark table-striped table-responsive">
                 <tr>
-                    <th>UserID</th>
+
                     <th>Username</th>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -61,8 +56,6 @@ include_once 'includes/users.inc.php';
 
                         foreach ($result as $row) {
                             echo "<tr><td>" .
-                                htmlspecialchars($row['userID'], ENT_QUOTES, 'UTF-8') .
-                                "</td><td>" .
                                 htmlspecialchars($row["username"], ENT_QUOTES, 'UTF-8') .
                                 "</td><td>" .
                                 htmlspecialchars($row["firstname"], ENT_QUOTES, 'UTF-8') .
@@ -130,7 +123,7 @@ include_once 'includes/users.inc.php';
                 </div>
             </div>
         </div>
-        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 mb-7">
+        <!-- <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 mb-7">
             <table class="table table-hover table-dark table-striped w-100 table-responsive">
                 <tr>
                     <th>UserID</th>
@@ -158,7 +151,7 @@ include_once 'includes/users.inc.php';
                 }
                 ?>
             </table>
-        </div>
+        </div> -->
     </div>
 
 

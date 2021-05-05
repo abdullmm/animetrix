@@ -1,0 +1,81 @@
+drop table credentials;
+drop table Observation;
+drop table project;
+drop table box;
+drop table user;
+
+CREATE TABLE   User (
+	 UserID   int  AUTO_INCREMENT not null,
+	 username   nvarchar (30) NOT NULL,
+	 firstname   nvarchar (30) not null,
+	 lastname   nvarchar (30) not null,
+	 email   nvarchar (30) not NULL,
+	 phone   nvarchar (20) not NULL,
+	 Status char(1) not null,
+	 Type nvarchar(30) not null,
+	 LastUpdated datetime not null,
+	 LastUpdatedBy nvarchar(30) not null,
+	 projectID int,
+	 primary key(userid)
+);
+
+
+
+
+
+CREATE TABLE   Project (
+	 ProjectID   int  AUTO_INCREMENT not null,
+	 Title   nvarchar (30) NOT NULL,
+	 Description nvarchar(30) not null,
+	 CreationDate   datetime  NOT NULL,
+	 lastUpdated datetime not null,
+	 lastUpdatedBy nvarchar(30) not null,
+	 ProjectOwner int not null,
+	 foreign key (ProjectOwner) references User(UserID),
+	 primary key (ProjectID)
+);
+
+CREATE TABLE   Box (
+	 BoxSerialNumber int AUTO_INCREMENT not null,
+	 BoxName nvarchar(30),
+	 BatteryStatus char(1) not null,
+	 AnimalStatus char(1) not null,
+	 Active char(1) not null,
+	 Primary key (BoxSerialNumber)
+);
+
+
+
+
+
+
+
+CREATE TABLE  Observation (
+	 ObservationNumber  int AUTO_INCREMENT not null,
+	 genus   nvarchar (30) NULL,
+	 species   nvarchar (30) NULL,
+	 size   nvarchar (30) NULL,
+	 weight   nvarchar (30) NOT NULL,
+	 temperature   nvarchar (30) NOT NULL,
+	 humidity   nvarchar (30) NOT NULL,
+	 ArrivalDayTime datetime,
+	 DepartureDayTime datetime,
+	 TotalTime int,
+	 LastUpdated datetime not null,
+	 LastUpdatedBy nvarchar(30),
+	BoxSerialNumber int not null,
+	ProjectID int not null,
+	foreign key (ProjectID) references Project(ProjectID),
+	foreign key (BoxSerialNumber) references Box(BoxSerialNumber),
+	primary key (observationNumber)
+
+) ;
+
+
+
+CREATE TABLE Credentials (
+UserID int not null,
+PasswordPhrase nvarchar(100) not null,
+foreign key (UserID) references user(UserID),
+primary key(userid)
+);

@@ -80,9 +80,6 @@
       <workItem from="1587314101333" duration="3218000" />
       <workItem from="1587328943519" duration="1405000" />
       <workItem from="1587333479118" duration="423000" />
-      <workItem from="1587334571304" duration="1111000" />
-      <workItem from="1587335978681" duration="734000" />
-      <workItem from="1587386998996" duration="2933000" />
     </task>
     <servers />
   </component>
@@ -99,12 +96,12 @@
     </state>
     <state x="-1152" y="686" key="NewPhpFileDialog/0.0.1280.680/-1920.243.1920.1040@-1920.243.1920.1040" timestamp="1587309112179" />
     <state x="512" y="290" key="NewPhpFileDialog/0.0.1280.680/-1920.243.1920.1040@0.0.1280.680" timestamp="1585759520214" />
-    <state x="338" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1587387007824">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="-1413" y="495" key="com.intellij.ide.util.TipDialog" timestamp="1587333525577">
+      <screen x="-1920" y="243" width="1920" height="1040" />
     </state>
     <state x="-1413" y="495" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.243.1920.1040@-1920.243.1920.1040" timestamp="1587333525577" />
-    <state x="338" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.243.1920.1040@0.0.1280.680" timestamp="1587335982206" />
-    <state x="338" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587387007824" />
+    <state x="338" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.243.1920.1040@0.0.1280.680" timestamp="1587154456221" />
+    <state x="338" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1586140916646" />
     <state x="0" y="0" width="1292" height="733" key="dock-window-1" timestamp="1586124568164">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
