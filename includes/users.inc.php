@@ -15,10 +15,10 @@ if (isset($_POST['save'])) {
         $stmt = mysqli_prepare($conn,$sql);
         mysqli_stmt_bind_param($stmt, "isi",$project, $lastUpdated, $id);
         mysqli_stmt_execute($stmt);
-        header("Location: ../users.php?success");
+        header("Location: ../src/users.php?success");
         exit();
     } else {
-        header("Location: ../users.php?error=select");
+        header("Location: ../src/users.php?error=select");
         exit();
     }
 
@@ -47,7 +47,7 @@ if (isset($_GET['delete'])) {
     mysqli_stmt_bind_param($stmt, "isi",$projectID, $lastUpdated, $userID);
     mysqli_stmt_execute($stmt);
 
-    header("Location: ../users.php?success");
+    header("Location: ../src/users.php?success");
     exit();
 
 }
@@ -58,7 +58,7 @@ if(isset($_GET['edit'])){
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql))
     {
-        header("Location: ../users.php?error=sqlerror" );
+        header("Location: ../src/users.php?error=sqlerror" );
         exit();
     } else{
         mysqli_stmt_bind_param($stmt,"i", $userID);
@@ -68,7 +68,7 @@ if(isset($_GET['edit'])){
         if ($resultCheck == 1) {
 
         } else {
-            header("Location: ../users.php?error=recorderror");
+            header("Location: ../src/users.php?error=recorderror");
             exit();
         }
     }

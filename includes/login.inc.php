@@ -8,7 +8,7 @@ if (isset($_POST['loginBtn'])) {
     $password = mysqli_real_escape_string($conn, $_POST['txtPassword']);
 
     if (empty($username) || empty($password)) {
-        header("Location: ../login.php?error=emptyfields");
+        header("Location: ../src/login.php?error=emptyfields");
         exit();
     } else {
 
@@ -24,13 +24,13 @@ if (isset($_POST['loginBtn'])) {
 
 
             if ($username != $row[1]) {
-                header("Location: ../login.php?error=nouser");
+                header("Location: ../src/login.php?error=nouser");
                 exit();
             } else {
                 $pass = $row[3];
                 $passwordCheck = password_verify($password, $row[3]);
                 if ($passwordCheck == false) {
-                    header("Location: ../login.php?error=wrongpass");
+                    header("Location: ../src/login.php?error=wrongpass");
                     exit();
                 } elseif ($passwordCheck == true) {
                     session_start();
@@ -39,23 +39,23 @@ if (isset($_POST['loginBtn'])) {
                     $_SESSION['firstname'] = $row[2];
                     $_SESSION['last_login_timestamp']= time();
 
-                    header("Location: ../users.php?login=success");
+                    header("Location: ../src/users.php?login=success");
                     exit();
                 } else {
-                    header("Location: ../login.php?error=wrongpass");
+                    header("Location: ../src/login.php?error=wrongpass");
                     exit();
                 }
             }
 
 
         } else {
-            header("Location: ../login.php?error=nouser");
+            header("Location: ../src/login.php?error=nouser");
             exit();
         }
     }
 
 
 } else {
-    header("Location: ../login.php");
+    header("Location: ../src/login.php");
     exit();
 }

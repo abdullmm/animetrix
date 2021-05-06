@@ -9,7 +9,7 @@ if (isset($_POST['btnCreate'])) {
     $description = mysqli_real_escape_string($conn, $_POST['txtDescription']);
 
     if (empty($description) || empty($title) ) {
-        header("Location: ../project.php?error=emptyfields");
+        header("Location: ../src/project.php?error=emptyfields");
         exit();
     }
     else {
@@ -17,7 +17,7 @@ if (isset($_POST['btnCreate'])) {
         $stmt = mysqli_prepare($conn,$sql);
         if(!mysqli_stmt_prepare($stmt,$sql))
         {
-            header("Location: ../project.php?error=sqlerror" );
+            header("Location: ../src/project.php?error=sqlerror" );
             exit();
         } else{
             mysqli_stmt_bind_param($stmt,"s", $title);
@@ -25,7 +25,7 @@ if (isset($_POST['btnCreate'])) {
             mysqli_stmt_store_result($stmt);
             $resultCheck= mysqli_stmt_num_rows($stmt);
             if ($resultCheck > 0) {
-                header("Location: ../project.php?error=titletaken");
+                header("Location: ../src/project.php?error=titletaken");
                 exit();
             }
             else
@@ -42,7 +42,7 @@ if (isset($_POST['btnCreate'])) {
 
                  mysqli_stmt_bind_param($stmt, "isssssi", $id, $title, $description,$creationDate, $lastUpdated, $lastUpdatedBy, $_SESSION['userID']);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../project.php?creation=success");
+                    header("Location: ../src/project.php?creation=success");
                     exit();
                 }
 
@@ -50,6 +50,6 @@ if (isset($_POST['btnCreate'])) {
 
 }
 } else {
-    header("Location: ../project.php");
+    header("Location: ../src/project.php");
     exit();
 }

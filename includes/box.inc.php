@@ -12,7 +12,7 @@ if (isset($_POST['btnCreate'])) {
     $active = 'a';
 
     if (empty($boxName) ) {
-        header("Location: ../box.php?error=emptyfields");
+        header("Location: ../src/box.php?error=emptyfields");
         exit();
     }
     else {
@@ -20,7 +20,7 @@ if (isset($_POST['btnCreate'])) {
         $stmt = mysqli_prepare($conn,$sql);
         if(!mysqli_stmt_prepare($stmt,$sql))
         {
-            header("Location: ../box.php?error=sqlerror" );
+            header("Location: ../src/box.php?error=sqlerror" );
             exit();
         } else{
             mysqli_stmt_bind_param($stmt,"s", $boxName);
@@ -28,7 +28,7 @@ if (isset($_POST['btnCreate'])) {
             mysqli_stmt_store_result($stmt);
             $resultCheck= mysqli_stmt_num_rows($stmt);
             if ($resultCheck > 0) {
-                header("Location: ../box.php?error=titletaken");
+                header("Location: ../src/box.php?error=titletaken");
                 exit();
             }
             else
@@ -42,7 +42,7 @@ if (isset($_POST['btnCreate'])) {
 
                 mysqli_stmt_bind_param($stmt, "issss", $id, $boxName, $batteryStatus,$animalStatus, $active);
                 mysqli_stmt_execute($stmt);
-                header("Location: ../box.php?creation=success");
+                header("Location: ../src/box.php?creation=success");
                 exit();
             }
 
@@ -50,6 +50,6 @@ if (isset($_POST['btnCreate'])) {
 
     }
 } else {
-    header("Location: ../box.php");
+    header("Location: ../src/box.php");
     exit();
 }

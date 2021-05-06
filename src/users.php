@@ -1,6 +1,6 @@
 <?php
 require 'head.php';
-include_once 'includes/users.inc.php';
+include_once '../includes/users.inc.php';
 
 
 ?>
@@ -38,14 +38,14 @@ include_once 'includes/users.inc.php';
                 </tr>
                 <?PHP
                 if (isset($_SESSION['userID'])) {
-                    include_once 'includes/dbh.inc.php';
+                    include_once '../includes/dbh.inc.php';
 
                     $sql = "SELECT userID, username, firstname,lastname,email,phone,status,type,lastupdated,lastupdatedby,projectID  FROM user;";
                     $stmt = mysqli_prepare($conn, $sql);
 
 
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
-                        header("Location: ../login.php?error=sqlerror");
+                        header("Location: ../src/login.php?error=sqlerror");
                         exit();
                     } else {
 
@@ -76,11 +76,11 @@ include_once 'includes/users.inc.php';
                                 "</td><td>" .
                                 htmlspecialchars($row["projectID"], ENT_QUOTES, 'UTF-8') .
                                 "</td><td>" .
-                                "<a   id=\"myBtn\" type='button' class=\"btn btn-info\"   href=\"users.php?edit=" .
+                                "<a   id=\"myBtn\" type='button' class=\"btn btn-info\"   href=\"../src/users.php?edit=" .
                                 $row['userID'] .
                                 "\">Assign</a>" .
                                 "</td><td>" .
-                                "<a class=\"btn btn-danger\" href=\"includes/users.inc.php?delete=" .
+                                "<a class=\"btn btn-danger\" href=\"../includes/users.inc.php?delete=" .
                                 $row['userID'] .
                                 "\">Remove</a>" .
                                 "</td></tr>";
@@ -97,8 +97,8 @@ include_once 'includes/users.inc.php';
             <div class=" ">
                 <div class="card-body body1">
 
-                    <?php include_once 'includes/users.inc.php'; ?>
-                    <form action="includes/users.inc.php" style="display: <?php if (isset($_GET['edit'])) {
+                    <?php include_once '../includes/users.inc.php'; ?>
+                    <form action="../includes/users.inc.php" style="display: <?php if (isset($_GET['edit'])) {
                         echo 'block';
                     } else {
                         echo 'none';
@@ -131,11 +131,11 @@ include_once 'includes/users.inc.php';
                 </tr>
                 <?PHP
                 if (isset($_SESSION['userID'])) {
-                    include_once 'includes/dbh.inc.php';
+                    include_once '../includes/dbh.inc.php';
                     $sql = "SELECT userID, PasswordPhrase  FROM credentials;";
                     $stmt = mysqli_prepare($conn, $sql);
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
-                        header("Location: ../login.php?error=sqlerror");
+                        header("Location: ../src/login.php?error=sqlerror");
                         exit();
                     } else {
                         mysqli_stmt_execute($stmt);

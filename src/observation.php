@@ -2,7 +2,7 @@
 
 <?php require 'head.php';
 
-include 'includes/dbh.inc.php';
+include '../includes/dbh.inc.php';
 $update=false;
 ?>
 <div id="myDiv2" class="bg-light">
@@ -210,7 +210,7 @@ if (isset($_GET['create'])) {
             <div class="px-2 ">
                 <div id="form" class="justify-content-center ">
                     <div align="center">
-                        <form action="includes/observation.inc.php" method="post">
+                        <form action="../includes/observation.inc.php" method="post">
                             <fieldset>
                                 <input type="hidden" value="<?php echo $obsID?>" id="first" name="obsID">
                                 <p align="center" class="text-uppercase text-orange"><b>Create Observation:</b></p>

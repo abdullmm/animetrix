@@ -10,10 +10,10 @@ require 'head.php';
     <!--Cards-->
     <div class="container-fluid bg-light text-dark">
         <div class="row">
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mb-3">
-                <div class=" ">
-                    <div class="card-body body1">
-                        <button id="myBtn" class="btn btn-warning">Register Box</button>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mb-3 ">
+                <div class="float-left">
+                    <div class="card-body body1 ">
+                        <button id="myBtn" class="btn btn-warning">Create Project</button>
                     </div>
                 </div>
             </div>
@@ -21,21 +21,22 @@ require 'head.php';
     </div>
     <div class="container-fluid ">
 
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-6">
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 mb-9">
             <table class="table table-hover table-dark table-striped table-responsive">
                 <tr>
-                    <th>BoxSerialNumber</th>
-                    <th>BoxName</th>
-                    <th>BatteryStatus</th>
-                    <th>AnimalStatus</th>
-                    <th>Active</th>
-
+                    <th>ProjectID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>CreationDate</th>
+                    <th>lastUpdated</th>
+                    <th>lastUpdatedBy</th>
+                    <th>ProjectOwner</th>
                 </tr>
                 <?PHP
                 if (isset($_SESSION['userID'])) {
-                    include_once 'includes/dbh.inc.php';
+                    include_once '../includes/dbh.inc.php';
 
-                    $sql = "SELECT BoxSerialNumber, BoxName, BatteryStatus, AnimalStatus, Active FROM Box;";
+                    $sql = "SELECT ProjectID, Title, Description,CreationDate,lastUpdated,lastUpdatedBy,ProjectOwner FROM project;";
                     $stmt = mysqli_prepare($conn, $sql);
 
 
@@ -45,15 +46,19 @@ require 'head.php';
 
                     foreach ($result as $row) {
                         echo "<tr><td>" .
-                            htmlspecialchars($row['BoxSerialNumber'], ENT_QUOTES, 'UTF-8') .
+                            htmlspecialchars($row['ProjectID'], ENT_QUOTES, 'UTF-8') .
                             "</td><td>" .
-                            htmlspecialchars($row["BoxName"], ENT_QUOTES, 'UTF-8') .
+                            htmlspecialchars($row["Title"], ENT_QUOTES, 'UTF-8') .
                             "</td><td>" .
-                            htmlspecialchars($row["BatteryStatus"], ENT_QUOTES, 'UTF-8') .
+                            htmlspecialchars($row["Description"], ENT_QUOTES, 'UTF-8') .
                             "</td><td>" .
-                            htmlspecialchars($row["AnimalStatus"], ENT_QUOTES, 'UTF-8') .
+                            htmlspecialchars($row["CreationDate"], ENT_QUOTES, 'UTF-8') .
                             "</td><td>" .
-                            htmlspecialchars($row["Active"], ENT_QUOTES, 'UTF-8') .
+                            htmlspecialchars($row["lastUpdated"], ENT_QUOTES, 'UTF-8') .
+                            "</td><td>" .
+                            htmlspecialchars($row["lastUpdatedBy"], ENT_QUOTES, 'UTF-8') .
+                            "</td><td>" .
+                            htmlspecialchars($row["ProjectOwner"], ENT_QUOTES, 'UTF-8') .
                             "</td></tr>";
 
 
@@ -79,26 +84,29 @@ require 'head.php';
         <span class="close">&times;</span>
 
         <div class="  mx-auto text-center form p-4 bg-white">
-            <h2 class="text-center" id="title"><img src="images/logocrop.png"
+            <h2 class="text-center" id="title"><img src="../web/images/logocrop.png"
                                                     id="ContentPlaceHolder1_logo" alt="logocopy"
                                                     class="teamLogo"/></h2>
             <div class="px-2 ">
                 <div id="form" class="justify-content-center ">
                     <div align="center">
-                        <form action="includes/box.inc.php" method="post">
+                        <form action="../includes/project.inc.php" method="post">
                             <fieldset>
-                                <p align="center" class="text-uppercase text-orange"><b>Register a Box:</b></p>
+                                <p align="center" class="text-uppercase text-orange"><b>Create a Project:</b></p>
                                 <div class="form-group">
                                     <div class="form-row">
                                         <div class="col-sm-1">
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <input name="txtBoxName" id="txtBoxName" type="text"
-                                                       class="form-control" placeholder="Box Name"/>
+                                                <input name="txtTitle" id="txtTitle" type="text"
+                                                       class="form-control" placeholder="Project Title"/>
                                             </div>
                                         </div>
-
+                                        <div class="col-sm-12">
+                                            <input type="text" name="txtDescription" id="txtDescription"
+                                                   class="form-control" placeholder="Description"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <?php
@@ -106,17 +114,17 @@ require 'head.php';
                                     ?>
                                     <script type="text/javascript">window.onload =function(){ modal.style.display = "block";document.getElementById("loader").style.display = "none";
                                             document.getElementById("myDiv").style.display = "block";}</script>
-                                    <?php
+                                <?php
                                     if ($_GET['error'] == "emptyfields") {
                                         echo '<p class= "alert text-danger"> Fill in all fields!</p>';
                                     } else if ($_GET['error'] == "titletaken") {
-                                        echo '<p class= "alert text-danger"> BoxName already in use!</p>';
+                                        echo '<p class= "alert text-danger"> Title already in use!</p>';
                                     }
                                 }
                                 ?>
                                 <div class="form-group" align="center">
-                                    <input type="submit" name="btnCreate" value="Register"
-                                           id="btnCreate" class="btn btn-warning"/>
+                                    <input type="submit" name="btnCreate" value="Create Project"
+                                           id="ContentPlaceHolder1_btnCreate" class="btn btn-warning"/>
                                     <br/>
                                 </div>
                                 <div>
@@ -142,7 +150,7 @@ require 'head.php';
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal
+    // When the user clicks the button, open the modal 
     btn.onclick = function () {
         modal.style.display = "block";
     }

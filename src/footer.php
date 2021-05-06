@@ -1,8 +1,8 @@
 
 
-<script src ="Scripts/jquery-3.0.0.min.js" type="text/javascript"></script>
-<script src ="Scripts/bootstrap.min.js" type="text/javascript"></script>
-<script src ="Scripts/popper.min.js" type="text/javascript"></script>
+<script src ="../web/css/jquery-3.0.0.min.js" type="text/javascript"></script>
+<script src ="../web/css/bootstrap.min.js" type="text/javascript"></script>
+<script src ="../web/css/popper.min.js" type="text/javascript"></script>
 
 
 <script>

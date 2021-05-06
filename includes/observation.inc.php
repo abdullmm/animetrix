@@ -23,7 +23,7 @@ if (isset($_POST['btnUpdate'])) {
     mysqli_stmt_bind_param($stmt, "ssssssssissiii",$genus,$species,$size,$weight,$temperature,$humidity,$arrivalDayTime,$departureDayTime,$totalTime,$lastUpdated,$lastUpdatedBy,$boxSerialNumber,$projectID,$id);
     mysqli_stmt_execute($stmt);
 
-    header("Location: ../observation.php?success");
+    header("Location: ../src/observation.php?success");
     exit();
 }
 
@@ -32,20 +32,20 @@ if (isset($_POST['btnCreate'])) {
 
     //Check for empty fields
     if (empty($weight) || empty($boxSerialNumber) || empty($humidity) || empty($temperature)) {
-        header("Location: ../observation.php?error=emptyfields");
+        header("Location: ../src/observation.php?error=emptyfields");
         exit();
     } //Check if email is valid
     else if (!is_numeric($weight)) {
-        header("Location: ../observation.php?error=invalidweight");
+        header("Location: ../src/observation.php?error=invalidweight");
         exit();
     } else if (!is_numeric($temperature)) {
-        header("Location: ../observation.php?error=temperature");
+        header("Location: ../src/observation.php?error=temperature");
         exit();
     } else if (!is_numeric($humidity)) {
-        header("Location: ../observation.php?error=invalidhumidity");
+        header("Location: ../src/observation.php?error=invalidhumidity");
         exit();
     } else if($totalTime<1){
-        header("Location: ../observation.php?error=totalTime");
+        header("Location: ../src/observation.php?error=totalTime");
         exit();
     } else {
         $sql = "INSERT INTO Observation(ObservationNumber,genus,species,size,weight,temperature,humidity,ArrivalDayTime,DepartureDayTime,TotalTime,LastUpdated,LastUpdatedBy,BoxSerialNumber,ProjectID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
@@ -53,11 +53,11 @@ if (isset($_POST['btnCreate'])) {
         mysqli_stmt_bind_param($stmt, "issssssssissii",$id,$genus,$species,$size,$weight,$temperature,$humidity,$arrivalDayTime,$departureDayTime,$totalTime,$lastUpdated,$lastUpdatedBy,$boxSerialNumber,$projectID);
         mysqli_stmt_execute($stmt);
 
-        header("Location: ../observation.php?success");
+        header("Location: ../src/observation.php?success");
         exit();
 
     }
 } else {
-    header("Location: ../observation.php");
+    header("Location: ../src/observation.php");
     exit();
 }

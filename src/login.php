@@ -24,13 +24,13 @@
                                 <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 bg-white">
                                     <h2 class="text-center" id="title">
 
-                                        <img src="images/logocrop.png" id="ContentPlaceHolder1_logo" alt="logocopy" class="teamLogo" /></h2>
+                                        <img src="../web/images/logocrop.png" id="ContentPlaceHolder1_logo" alt="logocopy" class="teamLogo" /></h2>
 
 
                                     <div class="px-2 ">
                                         <div id="form" class="justify-content-center">
                                             <div align="center">
-                                                <form  id="loginform" action="includes/login.inc.php" method="post" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+                                                <form  id="loginform" action="../includes/login.inc.php" method="post" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
 
                                                     <fieldset>
                                                         <p align="center" class="text-uppercase">Account Login: </p>
@@ -43,7 +43,7 @@
 
                                                         </div>
                                                         <div class="form-group" align="left">
-                                                            <a href="ResetPassword.aspx">Forgot Password?</a>
+                                                            <a href="">Forgot Password?</a>
 
                                                         </div>
                                                         <div class="form-group" align="center">

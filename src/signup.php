@@ -8,13 +8,13 @@
                 <div class="container">
                     <div class="row ">
                         <div class="  mx-auto text-center form p-4 bg-white">
-                            <h2 class="text-center" id="title"><img src="images/logocrop.png"
+                            <h2 class="text-center" id="title"><img src="../web/images/logocrop.png"
                                                                     id="ContentPlaceHolder1_logo" alt="logocopy"
                                                                     class="teamLogo"/></h2>
                             <div class="px-2 ">
                                 <div id="form" class="justify-content-center ">
                                     <div align="center">
-                                        <form action="includes/signup.inc.php" method="post">
+                                        <form action="../includes/signup.inc.php" method="post">
                                             <fieldset>
                                                 <p align="center" class="text-uppercase text-orange"><b>Account Sign
                                                         Up:</b></p>
@@ -120,8 +120,8 @@
                                                     <input type="submit" name="btnCreate" value="Create Account"
                                                            id="btnCreate" class="btn btn-warning"/>
 
-                                                    <button onclick="populate()" type="button" name="btnPopulate"
-                                                            id="btnPopulate" class="btn btn-warning">Populate</button>
+                                                    <!-- <button onclick="populate()" type="button" name="btnPopulate"
+                                                            id="btnPopulate" class="btn btn-warning">Populate</button> -->
 
                                                     <br/>
 

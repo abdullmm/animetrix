@@ -18,27 +18,27 @@ if (isset($_POST['btnCreate'])) {
     //Error handlers
     //Check for empty fields
     if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
-        header("Location: ../signup.php?error=emptyfields&txtUserName" . $username . "&mail=" . $email);
+        header("Location: ../src/signup.php?error=emptyfields&txtUserName" . $username . "&mail=" . $email);
         exit();
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        header("Location: ../signup.php?error=invalidmailuser");
+        header("Location: ../src/signup.php?error=invalidmailuser");
         exit();
     }
     //Check if email is valid
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../signup.php?error=invalidmail&txtUserName=" . $username);
+        header("Location: ../src/signup.php?error=invalidmail&txtUserName=" . $username);
         exit();
     } else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        header("Location: ../signup.php?error=invaliduser&txtEmail=" . $email);
+        header("Location: ../src/signup.php?error=invaliduser&txtEmail=" . $email);
         exit();
     } else if (!is_numeric($phone)){
-        header("Location: ../signup.php?error=invalidnumber&txtEmail=" . $email);
+        header("Location: ../src/signup.php?error=invalidnumber&txtEmail=" . $email);
         exit();
     } else if ($password!=$confirmPassword) {
-        header("Location: ../signup.php?error=passwordcheck&txtUserName=" . $username. "&txtEmail=".$email);
+        header("Location: ../src/signup.php?error=passwordcheck&txtUserName=" . $username. "&txtEmail=".$email);
         exit();
     } else if(!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/", $password)) {
-        header("Location: ../signup.php?error=passwordlength&txtUserName=" . $username. "&txtEmail=".$email);
+        header("Location: ../src/signup.php?error=passwordlength&txtUserName=" . $username. "&txtEmail=".$email);
         exit();
     }
     else {
@@ -47,7 +47,7 @@ if (isset($_POST['btnCreate'])) {
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt,$sql))
         {
-            header("Location: ../signup.php?error=sqlerror" );
+            header("Location: ../src/signup.php?error=sqlerror" );
             exit();
         } else{
             mysqli_stmt_bind_param($stmt,"s", $username);
@@ -55,7 +55,7 @@ if (isset($_POST['btnCreate'])) {
             mysqli_stmt_store_result($stmt);
             $resultCheck= mysqli_stmt_num_rows($stmt);
             if ($resultCheck > 0) {
-                header("Location: ../signup.php?error=usertaken");
+                header("Location: ../src/signup.php?error=usertaken");
                 exit();
             } else
                 {
@@ -68,7 +68,7 @@ if (isset($_POST['btnCreate'])) {
                     $stmt = mysqli_stmt_init($conn);
                     if(!mysqli_stmt_prepare($stmt,$sql))
                     {
-                        header("Location: ../signup.php?error=sqlerror" );
+                        header("Location: ../src/signup.php?error=sqlerror" );
                         exit();
                     } else{
                         mysqli_stmt_bind_param($stmt,"s", $email);
@@ -76,7 +76,7 @@ if (isset($_POST['btnCreate'])) {
                         mysqli_stmt_store_result($stmt);
                         $resultCheck= mysqli_stmt_num_rows($stmt);
                         if ($resultCheck > 0) {
-                            header("Location: ../signup.php?error=emailtaken");
+                            header("Location: ../src/signup.php?error=emailtaken");
                             exit();
                         }
                         else
@@ -87,7 +87,7 @@ if (isset($_POST['btnCreate'])) {
                                 $stmt = mysqli_stmt_init($conn);
                                 if(!mysqli_stmt_prepare($stmt,$sql))
                                 {
-                                    header("Location: ../signup.php?error=sqlerror" );
+                                    header("Location: ../src/signup.php?error=sqlerror" );
                                     exit();
                                 }
                                 else{
@@ -119,7 +119,7 @@ if (isset($_POST['btnCreate'])) {
 
 
 
-                                    header("Location: ../login.php?signup=success");
+                                    header("Location: ../src/login.php?signup=success");
                                     exit();
                                 }
 
@@ -139,6 +139,6 @@ if (isset($_POST['btnCreate'])) {
 
 
 } else {
-    header("Location: ../signup.php");
+    header("Location: ../src/signup.php");
     exit();
 }

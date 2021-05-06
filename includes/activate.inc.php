@@ -20,12 +20,12 @@ if (isset($_POST['Activate'])) {
 
     if($num==$boxSerialNumber)
     {
-        header("Location: ../signup.php");
+        header("Location: ../src/signup.php");
         exit();
 
     }
  else{
-        header("Location: ../activate.php");
+        header("Location: ../src/activate.php");
         exit();
     }
 
@@ -36,6 +36,6 @@ if (isset($_POST['Activate'])) {
 
 
 } else {
-    header("Location: ../activate.php");
+    header("Location: ../src/activate.php");
     exit();
 }
